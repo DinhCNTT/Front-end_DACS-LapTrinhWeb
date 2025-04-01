@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FaHome, FaUserPlus, FaUsersCog, FaCogs, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
-import { MdCategory } from "react-icons/md";
+import { MdCategory, MdAddBox, MdFolder } from "react-icons/md";  // Thêm MdFolder cho icon folder
 import "./Sidebar.css";
 
 const Sidebar = ({ onLogout }) => {
@@ -35,12 +35,11 @@ const Sidebar = ({ onLogout }) => {
                     <a href="#"><MdCategory className="menu-icon" /> <span className="menu-label">Thêm Danh Mục</span></a>
                 </li>
                 <li onClick={() => navigate("/admin/add-parent-category")}> 
-                    <a href="#"><MdCategory className="menu-icon" /> <span className="menu-label">Thêm Danh Mục Cha</span></a> 
+                    <a href="#"><MdAddBox className="menu-icon" /> <span className="menu-label">Thêm Danh Mục Cha</span></a> 
                 </li>
-                <li onClick={() => navigate("/admin/manage-subcategories")}>
-                    <a href="#"><MdCategory className="menu-icon" /> <span className="menu-label">Quản Lý Danh Mục Con</span></a>
+                <li onClick={() => navigate("/admin/manage-categories")}> 
+                    <a href="#"><MdFolder className="menu-icon" /> <span className="menu-label">Quản Lý Danh Mục Cha</span></a> 
                 </li>
-
                 <li>
                     <a href="#"><FaCogs className="menu-icon" /> <span className="menu-label">Cài đặt hệ thống</span></a>
                 </li>

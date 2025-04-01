@@ -1,82 +1,126 @@
-/* Table full width & center */
-table.min-w-full {
+/* Container chính - căn giữa bảng */
+.employee-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0; /* Giữ khoảng cách trên/dưới */
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
+    padding: 20px;
+    transform: translateX(280px); /* Đẩy bảng sang phải một chút */
+    
+}
+/* Đảm bảo thông báo Toastify luôn hiển thị ở góc phải trên cùng */
+.Toastify__toast-container {
+    position: fixed !important;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* Đảm bảo thông báo không bị che khuất */
+}
+/* Tiêu đề */
+.employee-title {
+    font-size: 28px; /* Tăng kích thước chữ tiêu đề */
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-/* Định dạng header */
-table.min-w-full thead tr {
+/* Chỉnh container để bảng có thể điều chỉnh */
+.employee-table-container {
+    display: flex;
+    justify-content: center; /* Căn bảng vào giữa */
+    padding: 20px;
+    width: 100%;
+}
+
+/* Bảng nhân viên */
+.employee-table {
+    width: 98%; /* Mở rộng bảng gần như toàn bộ màn hình */
+    max-width: 2200px; /* Tăng kích thước tối đa */
+    border-collapse: collapse;
+    background-color: white;
+    border: 2px solid #ccc; /* Đường viền dày hơn */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden; 
+    font-size: 18px; /* Tăng cỡ chữ cho toàn bảng */
+}
+
+/* Header bảng */
+.employee-table thead tr {
     background: linear-gradient(90deg, #4f46e5, #3b82f6);
     color: white;
+    font-size: 20px; /* Tăng cỡ chữ cho tiêu đề */
 }
 
-/* Định dạng cell */
-table.min-w-full th,
-table.min-w-full td {
-    padding: 12px;
+/* Ô bảng */
+.employee-table th,
+.employee-table td {
+    padding: 16px; /* Tăng khoảng cách giữa nội dung */
     border: 1px solid #ddd;
-    text-align: center !important;
+    text-align: center;
     vertical-align: middle;
+    font-size: 18px; /* Tăng cỡ chữ trong bảng */
 }
 
-/* Stripe row */
-table.min-w-full tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
+/* Hàng chẵn có màu nền khác */
+.employee-table tbody tr:nth-child(even) {
+    background-color: #f3f4f6;
 }
 
-/* Hover */
-table.min-w-full tbody tr:hover {
-    background-color: #f1f5f9;
+/* Hover hiệu ứng */
+.employee-table tbody tr:hover {
+    background-color: #e2e8f0;
     transition: 0.3s;
 }
-/* Đảm bảo tiêu đề nằm trên form và căn giữa */
-.title-header {
-    text-align: center; /* Căn giữa chữ */
-    width: 100%; /* Đảm bảo nó chiếm toàn bộ chiều ngang */
-    margin-bottom: 10px; /* Khoảng cách với bảng */
+
+/* Trạng thái bị khóa */
+.locked-status {
+    color: red;
+    font-weight: bold;
+    font-size: 18px; /* Cỡ chữ lớn hơn */
 }
 
-/* Đảm bảo bảng nằm chính giữa */
-.employee-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+/* Trạng thái hoạt động */
+.active-status {
+    color: green;
+    font-weight: bold;
+    font-size: 18px;
 }
 
-/* Định dạng bảng */
-table.min-w-full {
-    width: 100%; /* Không quá rộng */
-    max-width: 1240px; /* Giữ bảng trong giới hạn */
-    margin: 0 auto; /* Căn giữa */
-}
-.employee-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 160%;
-    padding-left: 110px; /* Dành không gian cho sidebar */
-}
-/* Đảm bảo bảng chiếm toàn bộ phần hiển thị */
-.table-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+/* Nút khóa/mở khóa */
+.toggle-lock-button {
+    padding: 12px 18px; /* Tăng kích thước nút */
+    font-size: 16px; /* Tăng cỡ chữ */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s;
 }
 
-/* Bảng mở rộng ngang tối đa */
-table {
-    width: 90%;
-    max-width: 1200px; /* Giới hạn tối đa nếu muốn */
+/* Màu sắc khi khóa */
+.toggle-lock-button.lock {
+    background: #e74c3c;
 }
-.employee-title {
-    margin-bottom: 80px; /* Tùy chỉnh khoảng cách theo ý muốn */
-  }
+
+.toggle-lock-button.lock:hover {
+    background: #c0392b;
+}
+
+/* Màu sắc khi mở khóa */
+.toggle-lock-button.unlock {
+    background: #27ae60;
+}
+
+.toggle-lock-button.unlock:hover {
+    background: #219150;
+}
+
+/* Thông báo khi không có dữ liệu */
+.no-data-message {
+    text-align: center;
+    font-size: 20px;
+    color: #888;
+    font-weight: bold;
+    padding: 20px;
+}
   

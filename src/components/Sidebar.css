@@ -76,7 +76,7 @@
 
 .logout-btn {
   position: relative;
-  top: -30px; /* Đẩy lên 30px */
+  top: -10px; /* Đẩy lên 10px */
   width: 100%;
   padding: 15px;
   background: white;
