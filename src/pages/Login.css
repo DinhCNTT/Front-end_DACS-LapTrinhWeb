@@ -85,8 +85,9 @@ button:hover {
 .signup-link a:hover {
     text-decoration: underline;
 }
+/* Thông báo lỗi */
 .error-message {
-    color: #fff;
+    color: #000; /* Chữ màu đen */
     background: #d32f2f; /* Màu đỏ chính */
     border: 2px solid #ffa726; /* Viền màu cam */
     padding: 12px;
@@ -98,6 +99,7 @@ button:hover {
     animation: fadeInShake 0.6s ease-in-out;
     transform-origin: center;
 }
+
 
 /* Hiệu ứng xuất hiện + rung nhẹ */
 @keyframes fadeInShake {

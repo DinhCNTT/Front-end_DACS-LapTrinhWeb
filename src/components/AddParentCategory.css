@@ -81,8 +81,14 @@
     margin-top: 10px;
 }
 
-.parent-category-submit-button:hover {
+.parent-category-submit-button:hover:not(:disabled) {
     background: #e68a00;
+}
+
+.disabled-button {
+    background-color: #cccccc !important;
+    cursor: not-allowed !important;
+    opacity: 0.7;
 }
 
 /* Preview ảnh */
@@ -161,6 +167,30 @@
     width: 24px;
     height: 24px;
     object-fit: contain;
+}
+
+/* Thông báo lỗi */
+.error-message {
+    color: #ff4d4f;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.checking-message {
+    color: #1890ff;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.error-field {
+    border: 1px solid #ff4d4f !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Responsive */

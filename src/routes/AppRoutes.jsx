@@ -10,7 +10,7 @@ import EmployeeList from "../components/EmployeeList";
 import AddCategory from "../components/AddCategory";
 import AddParentCategory from "../components/AddParentCategory";
 import ManageParentCategories from "../pages/ManageParentCategories";
-
+import ManageCategories from "../pages/ManageCategories";
 const AdminRoute = ({ children }) => {
     const { user, role } = useContext(AuthContext);
 
@@ -50,6 +50,7 @@ function AppRoutes() {
               path="/admin/manage-categories" 
               element={<AdminRoute><ManageParentCategories /></AdminRoute>} 
             />
+            <Route path="/admin/manage-subcategories" element={<AdminRoute><ManageCategories /></AdminRoute>} />
         </Routes>
     );
 }

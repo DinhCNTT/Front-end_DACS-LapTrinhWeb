@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FaHome, FaUserPlus, FaUsersCog, FaCogs, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
-import { MdCategory, MdAddBox, MdFolder } from "react-icons/md";  // Thêm MdFolder cho icon folder
+import { MdCategory, MdOutlinePostAdd, MdOutlineLibraryAdd, MdFolderOpen } from "react-icons/md"; 
 import "./Sidebar.css";
 
 const Sidebar = ({ onLogout }) => {
@@ -16,7 +16,6 @@ const Sidebar = ({ onLogout }) => {
                 <div className="avatar-container">
                     <FaUserCircle className="avatar-icon" />
                 </div>
-                {/* ✅ Hiển thị họ tên từ user */}
                 <p className="welcome-text">Xin chào, {user?.fullName || "Admin"}!</p>
             </div>
 
@@ -26,19 +25,22 @@ const Sidebar = ({ onLogout }) => {
                     <a href="#"><FaHome className="menu-icon" /> <span className="menu-label">Quản Lý Người Dùng</span></a>
                 </li>
                 <li onClick={() => navigate("/admin/add-employee")}>
-                    <a href="#"><FaUserPlus className="menu-icon" /> <span className="menu-label">Thêm Nhân Viên</span></a>
+                    <a href="#"><FaUserPlus className="menu-icon" /> <span className="menu-label">Phân quyền người dùng</span></a>
                 </li>
                 <li onClick={() => navigate("/admin/employees")}>
                     <a href="#"><FaUsersCog className="menu-icon" /> <span className="menu-label">Quản Lý Nhân Viên</span></a>
                 </li>
                 <li onClick={() => navigate("/admin/add-category")}>
-                    <a href="#"><MdCategory className="menu-icon" /> <span className="menu-label">Thêm Danh Mục</span></a>
+                    <a href="#"><MdOutlinePostAdd className="menu-icon" /> <span className="menu-label">Thêm Danh Mục</span></a>
+                </li>
+                <li onClick={() => navigate("/admin/manage-subcategories")}> 
+                    <a href="#"><MdCategory className="menu-icon" /> <span className="menu-label">Quản Lý Danh Mục</span></a> 
                 </li>
                 <li onClick={() => navigate("/admin/add-parent-category")}> 
-                    <a href="#"><MdAddBox className="menu-icon" /> <span className="menu-label">Thêm Danh Mục Cha</span></a> 
+                    <a href="#"><MdOutlineLibraryAdd className="menu-icon" /> <span className="menu-label">Thêm Danh Mục Cha</span></a> 
                 </li>
                 <li onClick={() => navigate("/admin/manage-categories")}> 
-                    <a href="#"><MdFolder className="menu-icon" /> <span className="menu-label">Quản Lý Danh Mục Cha</span></a> 
+                    <a href="#"><MdFolderOpen className="menu-icon" /> <span className="menu-label">Quản Lý Danh Mục Cha</span></a> 
                 </li>
                 <li>
                     <a href="#"><FaCogs className="menu-icon" /> <span className="menu-label">Cài đặt hệ thống</span></a>

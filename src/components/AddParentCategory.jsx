@@ -11,6 +11,9 @@ const AddParentCategory = () => {
     const [categories, setCategories] = useState([]);
     const [previewImage, setPreviewImage] = useState("");
     const [previewIcon, setPreviewIcon] = useState("");
+    const [isChecking, setIsChecking] = useState(false);
+    const [isNameDuplicate, setIsNameDuplicate] = useState(false);
+    const [showErrors, setShowErrors] = useState(false);
 
     useEffect(() => {
         fetchCategories();
@@ -26,6 +29,29 @@ const AddParentCategory = () => {
         }
     };
 
+    const checkCategoryExists = async (name) => {
+        if (!name.trim()) return false;
+        setIsChecking(true);
+        try {
+            const exists = categories.some(cat => 
+                cat.tenDanhMucCha.toLowerCase() === name.toLowerCase()
+            );
+            setIsNameDuplicate(exists);
+            return exists;
+        } catch (error) {
+            console.error("Lỗi khi kiểm tra danh mục:", error);
+            return false;
+        } finally {
+            setIsChecking(false);
+        }
+    };
+
+    const handleNameChange = async (e) => {
+        const name = e.target.value;
+        setTenDanhMucCha(name);
+        await checkCategoryExists(name);
+    };
+
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         setAnhDanhMuc(file);
@@ -38,18 +64,23 @@ const AddParentCategory = () => {
         setPreviewIcon(URL.createObjectURL(file));
     };
 
+    const isFormValid = () => {
+        return tenDanhMucCha.trim() && anhDanhMuc && icon && !isNameDuplicate;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setShowErrors(true);
         
-        if (!tenDanhMucCha.trim()) {
-            toast.error("Vui lòng nhập tên danh mục cha!");
+        if (!isFormValid()) {
+            toast.error("Vui lòng nhập đầy đủ thông tin!");
             return;
         }
 
         const formData = new FormData();
         formData.append("tenDanhMucCha", tenDanhMucCha);
-        if (anhDanhMuc) formData.append("anhDanhMuc", anhDanhMuc);
-        if (icon) formData.append("icon", icon);
+        formData.append("anhDanhMuc", anhDanhMuc);
+        formData.append("icon", icon);
 
         try {
             await axios.post("http://localhost:5133/api/admin/add-parent-category", formData, {
@@ -64,7 +95,9 @@ const AddParentCategory = () => {
             setIcon(null);
             setPreviewImage("");
             setPreviewIcon("");
-            fetchCategories();
+            setIsNameDuplicate(false);
+            setShowErrors(false);
+            await fetchCategories();
         } catch (error) {
             console.error("Lỗi khi thêm danh mục cha:", error);
             toast.error(error.response?.data?.message || "Lỗi khi thêm danh mục cha!");
@@ -81,9 +114,17 @@ const AddParentCategory = () => {
                         type="text"
                         placeholder="Nhập tên danh mục cha"
                         value={tenDanhMucCha}
-                        onChange={(e) => setTenDanhMucCha(e.target.value)}
+                        onChange={handleNameChange}
+                        className={showErrors && !tenDanhMucCha.trim() ? 'error-field' : ''}
                         required
                     />
+                    {isChecking && <span className="checking-message">Đang kiểm tra...</span>}
+                    {isNameDuplicate && (
+                        <span className="error-message">Tên danh mục đã tồn tại!</span>
+                    )}
+                    {showErrors && !tenDanhMucCha.trim() && (
+                        <span className="error-message">Vui lòng nhập tên danh mục</span>
+                    )}
                 </div>
 
                 <div className="form-group">
@@ -92,6 +133,8 @@ const AddParentCategory = () => {
                         type="file"
                         onChange={handleImageChange}
                         accept="image/*"
+                        className={showErrors && !anhDanhMuc ? 'error-field' : ''}
+                        required
                     />
                     {previewImage && (
                         <img 
@@ -99,6 +142,9 @@ const AddParentCategory = () => {
                             alt="Preview" 
                             className="image-preview"
                         />
+                    )}
+                    {showErrors && !anhDanhMuc && (
+                        <span className="error-message">Vui lòng chọn ảnh</span>
                     )}
                 </div>
 
@@ -108,6 +154,8 @@ const AddParentCategory = () => {
                         type="file"
                         onChange={handleIconChange}
                         accept="image/*"
+                        className={showErrors && !icon ? 'error-field' : ''}
+                        required
                     />
                     {previewIcon && (
                         <img 
@@ -116,9 +164,16 @@ const AddParentCategory = () => {
                             className="icon-preview"
                         />
                     )}
+                    {showErrors && !icon && (
+                        <span className="error-message">Vui lòng chọn icon</span>
+                    )}
                 </div>
 
-                <button className="parent-category-submit-button" type="submit">
+                <button 
+                    className={`parent-category-submit-button ${!isFormValid() ? 'disabled-button' : ''}`}
+                    type="submit"
+                    disabled={!isFormValid() || isChecking}
+                >
                     Thêm
                 </button>
             </form>

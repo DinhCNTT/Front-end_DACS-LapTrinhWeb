@@ -41,7 +41,7 @@ const EmployeeList = () => {
 
   return (
     <div className="employee-list-container">
-      <h2 className="employee-title">📋 Quản lý Nhân Viên</h2>
+      <h2 className="employee-title">Quản Lý Nhân Viên</h2>
 
       <ToastContainer 
       autoClose={3000} />
