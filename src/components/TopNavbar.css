@@ -1,0 +1,106 @@
+.top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: #ff9900; /* Màu kem sang trọng */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Phần bên trái */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #B85C38; /* Màu nâu đỏ sang trọng */
+    text-decoration: none;
+}
+
+.main-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.main-menu a {
+    color: #5A5A5A;
+    text-decoration: none;
+    font-weight: 500;
+}
+/* Phần bên phải */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.location span {
+    color: #666;
+    cursor: pointer;
+}
+
+.manage-post {
+    color: #5A5A5A;
+    text-decoration: none;
+}
+
+.post-btn {
+    background: #B85C38; /* Màu nâu đỏ nổi bật */
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+/* Giữ thanh tìm kiếm gọn trong navbar */
+.nav-search {
+    flex: 1; /* Chiếm phần còn lại của navbar */
+    display: flex;
+    justify-content: center;
+    max-width: 500px; /* Giới hạn chiều rộng */
+}
+/* Thu nhỏ kích thước chữ trong navbar */
+.top-navbar {
+    font-size: 14px; /* Giảm kích thước chữ chung */
+}
+
+/* Logo */
+.logo {
+    font-size: 22px; /* Tăng kích thước logo */
+    font-weight: 800; /* Đậm hơn */
+    color: #FFFFFF; /* Màu trắng */
+    text-decoration: none;
+    text-transform: uppercase; /* Viết hoa toàn bộ nếu muốn nổi bật */
+    letter-spacing: 1px; /* Tạo khoảng cách giữa các chữ */
+}
+
+/* Chỉnh màu chữ đậm hơn */
+.main-menu a {
+    color: #111111; /* Đen đậm hơn */
+    font-weight: 600; /* Chữ đậm hơn */
+}
+
+.location span, .manage-post {
+    color: #111111; /* Đậm hơn */
+    font-weight: 600;
+}
+
+.post-btn {
+    font-weight: 700; /* Chữ trên nút đăng tin đậm hơn */
+}
+
+
+/* Nút đăng tin */
+.post-btn {
+    font-size: 14px;
+}

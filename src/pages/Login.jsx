@@ -30,10 +30,11 @@ const Login = () => {
             localStorage.setItem("userRole", userData.role);
             localStorage.setItem("userFullName", userData.fullName); // ✅ Lưu họ tên vào localStorage
 
+            // ✅ Điều hướng phù hợp với từng role
             if (userData.role === "Admin") {
                 navigate("/admin");
             } else {
-                navigate("/");
+                navigate("/market"); // ✅ Giữ điều hướng theo Code 2
             }
         } catch (error) {
             const errorMsg = error.response?.data?.message || "Đăng nhập thất bại!";

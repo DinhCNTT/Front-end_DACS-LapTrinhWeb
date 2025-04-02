@@ -11,6 +11,7 @@ import AddCategory from "../components/AddCategory";
 import AddParentCategory from "../components/AddParentCategory";
 import ManageParentCategories from "../pages/ManageParentCategories";
 import ManageCategories from "../pages/ManageCategories";
+import MarketPage from "../pages/MarketPage"; // ✅ Import trang MarketPage
 const AdminRoute = ({ children }) => {
     const { user, role } = useContext(AuthContext);
 
@@ -40,7 +41,9 @@ function AppRoutes() {
             <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/market" element={<MarketPage />} /> 
 
+            {/* Bảo vệ trang Admin */}
             <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
             <Route path="/admin/add-employee" element={<AdminRoute><AddEmployee /></AdminRoute>} /> 
             <Route path="/admin/employees" element={<AdminRoute><EmployeeList /></AdminRoute>} />
