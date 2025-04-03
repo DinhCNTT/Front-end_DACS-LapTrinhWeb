@@ -12,6 +12,8 @@ import AddParentCategory from "../components/AddParentCategory";
 import ManageParentCategories from "../pages/ManageParentCategories";
 import ManageCategories from "../pages/ManageCategories";
 import MarketPage from "../pages/MarketPage"; // ✅ Import trang MarketPage
+import PostForm from "../components/PostForm"; // Import PostForm component
+import ManagePosts from "../components/ManagePosts"; // Import thêm ManagePosts component (quản lý tin đăng)
 const AdminRoute = ({ children }) => {
     const { user, role } = useContext(AuthContext);
 
@@ -42,6 +44,7 @@ function AppRoutes() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/market" element={<MarketPage />} /> 
+            <Route path="/dang-tin" element={<PostForm />} /> 
 
             {/* Bảo vệ trang Admin */}
             <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
@@ -54,7 +57,8 @@ function AppRoutes() {
               element={<AdminRoute><ManageParentCategories /></AdminRoute>} 
             />
             <Route path="/admin/manage-subcategories" element={<AdminRoute><ManageCategories /></AdminRoute>} />
-        </Routes>
+            <Route path="/admin/manage-posts" element={<AdminRoute><ManagePosts /></AdminRoute>} /> {/* Quản lý tin đăng */}
+        </Routes>      
     );
 }
 

@@ -1,0 +1,98 @@
+/* Quản lý tin đăng */
+.manage-posts-container {
+    padding: 20px;
+    width: calc(90vw - 190px); /* Điều chỉnh độ rộng tương tự CSS2 */
+    margin-left: 250px; /* Điều chỉnh vị trí sang phải giống CSS2 */
+    background-color: #f9f9f9; /* Màu nền giống CSS2 */
+}
+
+/* Tiêu đề */
+.manage-posts-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Bảng quản lý tin đăng */
+.manage-posts-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Tạo bóng mờ giống CSS2 */
+    border-radius: 8px; /* Thêm border-radius cho bảng */
+}
+
+/* Cột tiêu đề và dữ liệu trong bảng */
+.manage-posts-table th,
+.manage-posts-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.manage-posts-table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    color: #333;
+}
+
+.manage-posts-table td {
+    color: #555;
+}
+
+/* Các nút Duyệt và Từ chối */
+.manage-posts-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.manage-posts-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.manage-posts-approve-btn {
+    background-color: #28a745; /* Màu xanh lá cây cho nút Duyệt */
+    color: white;
+}
+
+.manage-posts-reject-btn {
+    background-color: #dc3545; /* Màu đỏ cho nút Từ chối */
+    color: white;
+}
+
+.manage-posts-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px); /* Tạo hiệu ứng nâng lên giống CSS2 */
+}
+
+/* Trạng thái tin đăng */
+.manage-posts-status-approved {
+    color: green;
+    font-weight: bold;
+}
+
+.manage-posts-status-rejected {
+    color: red;
+    font-weight: bold;
+}
+
+.manage-posts-status-pending {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+/* Căn chỉnh độ rộng và căn giữa cho các cột */
+.manage-posts-btn,
+.manage-posts-td {
+    width: 120px;
+    text-align: center;
+}
+
+.manage-posts-no-data-message {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+}

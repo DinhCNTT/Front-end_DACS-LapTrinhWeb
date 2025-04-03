@@ -26,7 +26,28 @@
 }
 /* Tiêu đề "Đăng nhập" */
 .login-box h2 {
-    color: black !important; /* Đổi màu chữ thành đen */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    background: linear-gradient(
+        90deg,
+        #ff7b00,  /* Cam đậm */
+        #ff9500,  /* Cam sáng */
+        #ffbb00,  /* Vàng cam */
+        #ff7b00   /* Quay lại cam đậm */
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientFlow 4s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Link đăng ký */
@@ -37,7 +58,7 @@
 
 /* Ô nhập liệu */
 input {
-    width: 100%;
+    width: 93%;
     padding: 12px;
     margin: 8px 0;
     border: 1px solid #ccc; /* Viền nhẹ */
@@ -88,7 +109,6 @@ button:hover {
 /* Thông báo lỗi */
 .error-message {
     color: #000; /* Chữ màu đen */
-    background: #d32f2f; /* Màu đỏ chính */
     border: 2px solid #ffa726; /* Viền màu cam */
     padding: 12px;
     border-radius: 8px;

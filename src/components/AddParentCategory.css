@@ -156,16 +156,16 @@
     width: 100%;
 }
 
-.category-image {
-    width: 40px;
-    height: 40px;
+.add-parent-category-image {
+    width: 70px;
+    height: 70px;
     object-fit: cover;
     border-radius: 4px;
 }
 
-.category-icon {
-    width: 24px;
-    height: 24px;
+.add-parent-category-icon {
+    width: 40px;
+    height: 40px;
     object-fit: contain;
 }
 

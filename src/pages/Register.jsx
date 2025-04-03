@@ -4,7 +4,7 @@ import "./RegisterForm.css";
 
 const RegisterForm = () => {
   const [fullName, setFullName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState(""); // Số điện thoại
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -14,28 +14,24 @@ const RegisterForm = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    // Kiểm tra số điện thoại: 10-11 số
     const phoneRegex = /^[0-9]{10,11}$/;
     if (!phoneRegex.test(phoneNumber)) {
       alert("❌ Số điện thoại không hợp lệ! Vui lòng nhập 10-11 số.");
       return;
     }
-    
-    // Ràng buộc email phải thuộc domain Gmail
+
     const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
     if (!gmailRegex.test(email)) {
       alert("❌ Email phải là địa chỉ Gmail (ví dụ: example@gmail.com).");
       return;
     }
 
-    // Kiểm tra mật khẩu: ít nhất 8 ký tự, chứa chữ hoa, chữ thường, số và ký tự đặc biệt
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
     if (!passwordRegex.test(password)) {
       alert("❌ Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt.");
       return;
     }
 
-    // Kiểm tra mật khẩu xác nhận
     if (password !== confirmPassword) {
       alert("❌ Mật khẩu xác nhận không khớp.");
       return;
@@ -61,9 +57,9 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="container">
+    <div className="register-container">
       <div className="register-box">
-        <h2>Đăng ký tài khoản</h2>
+        <h2 className="register-title">Đăng ký tài khoản</h2>
         <form className="register-form" onSubmit={handleRegister}>
           <input
             type="text"
@@ -71,6 +67,7 @@ const RegisterForm = () => {
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
             required
+            className="register-input"
           />
           <input
             type="tel"
@@ -78,6 +75,7 @@ const RegisterForm = () => {
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
             required
+            className="register-input"
           />
           <input
             type="email"
@@ -85,6 +83,7 @@ const RegisterForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className="register-input"
           />
           <input
             type="password"
@@ -92,6 +91,7 @@ const RegisterForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className="register-input"
           />
           <input
             type="password"
@@ -99,13 +99,14 @@ const RegisterForm = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            className="register-input"
           />
           
-          <p className="terms">
+          <p className="register-terms">
             Khi đăng ký, bạn đồng ý với <a href="#">Điều khoản sử dụng</a> và <a href="#">Chính sách bảo mật</a>.
           </p>
 
-          <button type="submit">Đăng ký</button>
+          <button type="submit" className="register-button">Đăng ký</button>
         </form>
       </div>
     </div>

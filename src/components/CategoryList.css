@@ -1,5 +1,5 @@
 .category-container {
-    width: 100%;
+    width: 2000px;
     max-width: 960px; /* Giữ nguyên chiều rộng */
     height: 380px; /* Giữ nguyên chiều dài */
     margin: 0 auto;
@@ -22,14 +22,14 @@
     margin-bottom: 15px;
     text-align: left;
     padding-left: 0;
-    margin-left: 0; /* Loại bỏ margin-left để tiêu đề không bị đẩy sang phải */
+    margin-left: 0;
     margin-top: 100px;
     color: #333;
-    transition: color 0.3s ease; /* Chỉ áp dụng chuyển đổi màu */
+    transition: color 0.3s ease;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
     position: relative;
-    top: -60px; /* Đẩy tiêu đề lên trên */
-    left: 0; /* Đẩy tiêu đề về phía trái */
+    top: -40px; /* Giảm giá trị này để tiêu đề xuống dưới */
+    left: 0;
 }
 
 
@@ -63,13 +63,15 @@
 
 
 .category-image {
-    width: 90px; /* Kích thước ảnh */
+    width: 90px;
     height: 90px;
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm chuyển đổi cho hiệu ứng */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 30px; /* Tăng khoảng cách để ảnh dịch xuống */
 }
+
 
 .category-image:hover {
     transform: scale(1.1); /* Phóng to ảnh lên */

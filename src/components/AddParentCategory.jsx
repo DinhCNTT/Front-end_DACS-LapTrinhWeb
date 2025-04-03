@@ -191,14 +191,14 @@ const AddParentCategory = () => {
                                     <img 
                                         src={`http://localhost:5133/${cat.anhDanhMuc}`} 
                                         alt={cat.tenDanhMucCha}
-                                        className="category-image"
+                                        className="add-parent-category-image"
                                     />
                                 )}
                                 {cat.icon && (
                                     <img 
                                         src={`http://localhost:5133/${cat.icon}`} 
                                         alt={`${cat.tenDanhMucCha} icon`}
-                                        className="category-icon"
+                                        className="add-parent-category-icon"
                                     />
                                 )}
                             </div>

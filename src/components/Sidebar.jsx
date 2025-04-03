@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FaHome, FaUserPlus, FaUsersCog, FaCogs, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
-import { MdCategory, MdOutlinePostAdd, MdOutlineLibraryAdd, MdFolderOpen } from "react-icons/md"; 
+import { MdCategory, MdOutlinePostAdd, MdOutlineLibraryAdd, MdFolderOpen, MdPostAdd } from "react-icons/md"; // Thêm icon MdPostAdd cho mục "Quản Lý Tin Đăng"
 import "./Sidebar.css";
 
 const Sidebar = ({ onLogout }) => {
@@ -42,8 +42,8 @@ const Sidebar = ({ onLogout }) => {
                 <li onClick={() => navigate("/admin/manage-categories")}> 
                     <a href="#"><MdFolderOpen className="menu-icon" /> <span className="menu-label">Quản Lý Danh Mục Cha</span></a> 
                 </li>
-                <li>
-                    <a href="#"><FaCogs className="menu-icon" /> <span className="menu-label">Cài đặt hệ thống</span></a>
+                <li onClick={() => navigate("/admin/manage-posts")}> {/* Thêm mục Quản Lý Tin Đăng */}
+                    <a href="#"><MdPostAdd className="menu-icon" /> <span className="menu-label">Quản Lý Tin Đăng</span></a>
                 </li>
             </ul>
 

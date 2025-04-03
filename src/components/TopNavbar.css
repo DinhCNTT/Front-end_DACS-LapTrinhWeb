@@ -12,11 +12,11 @@
     z-index: 1000;
 }
 
-/* Phần bên trái */
 .nav-left {
     display: flex;
-    align-items: center;
-    gap: 30px;
+    align-items: center; /* Đảm bảo chữ nằm giữa theo chiều dọc */
+    gap: 15px; /* Khoảng cách giữa các chữ */
+    height: 100%; /* Giúp toàn bộ phần tử trong .nav-left chiếm đủ chiều cao */
 }
 
 .logo {
@@ -25,24 +25,23 @@
     color: #B85C38; /* Màu nâu đỏ sang trọng */
     text-decoration: none;
 }
-
 .main-menu {
     display: flex;
-    gap: 20px;
+    align-items: center; /* Giữ các chữ thẳng hàng */
+    gap: 15px; /* Tạo khoảng cách giữa các chữ */
 }
+
 
 .main-menu a {
     color: #5A5A5A;
     text-decoration: none;
     font-weight: 500;
 }
-/* Phần bên phải */
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 20px; /* Giảm khoảng cách giữa các mục bên phải */
 }
-
 .location span {
     color: #666;
     cursor: pointer;
@@ -104,3 +103,137 @@
 .post-btn {
     font-size: 14px;
 }
+/* Phần chứa dropdown */
+/* Dropdown Danh mục */
+.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-toggle {
+    font-weight: bold;
+    color: #333;
+    padding: 10px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    z-index: 999;
+}
+
+.category-entry {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.category-item img.category-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.subcategory-list {
+    margin-left: 20px;
+}
+
+.subcategory-item {
+    font-size: 14px;
+    color: #555;
+    padding: 4px 0;
+}
+/* Nội dung danh mục chính */
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    width: 250px;
+    max-height: 500px; /* Tăng chiều cao để chứa nhiều danh mục hơn */
+    overflow: visible; /* Hiển thị đầy đủ nội dung thay vì bị ẩn */
+    border-radius: 5px;
+    z-index: 1000;
+  }
+  
+  /* Hiển thị danh mục cha khi hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Danh mục cha */
+  .parent-category {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    position: relative; /* Quan trọng để danh mục con có thể định vị dựa trên nó */
+    cursor: pointer;
+    white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+  }
+  
+  /* Danh mục con (sub-menu) */
+  .sub-menu {
+    position: absolute;
+    top: 0;
+    left: 100%; /* Hiển thị bên phải danh mục cha */
+    background: white;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* Ẩn mặc định */
+    z-index: 1001;
+    border-radius: 5px;
+    white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+  }
+  
+  /* Hiển thị danh mục con khi hover vào danh mục cha */
+  .parent-category:hover .sub-menu {
+    display: block;
+  }
+  
+  /* Định dạng danh mục con */
+  .sub-menu .sub-link {
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Hover vào sub-link */
+  .sub-menu .sub-link:hover {
+    background-color: #f4f4f4;
+  }
+/* Tiêu đề danh mục */
+.dropdown-title {
+    font-size: 18px; /* Làm chữ to hơn */
+    font-weight: bold;
+    color: white; /* Đổi màu chữ thành trắng */
+    padding: 12px 20px;
+    background: #ff9900; /* Màu nền (tùy chỉnh) */
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap; /* Ngăn chữ xuống dòng */
+    text-align: center;
+    
+}
+
+/* Icon trong danh mục cha */
+.parent-category .category-icon {
+    width: 18px; /* Giảm kích thước icon */
+    height: 18px; /* Giảm kích thước icon */
+    margin-right: 8px;
+  }
+    
