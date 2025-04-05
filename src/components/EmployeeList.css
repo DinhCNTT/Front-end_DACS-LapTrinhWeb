@@ -1,0 +1,82 @@
+/* Table full width & center */
+table.min-w-full {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0; /* Giữ khoảng cách trên/dưới */
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Định dạng header */
+table.min-w-full thead tr {
+    background: linear-gradient(90deg, #4f46e5, #3b82f6);
+    color: white;
+}
+
+/* Định dạng cell */
+table.min-w-full th,
+table.min-w-full td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center !important;
+    vertical-align: middle;
+}
+
+/* Stripe row */
+table.min-w-full tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Hover */
+table.min-w-full tbody tr:hover {
+    background-color: #f1f5f9;
+    transition: 0.3s;
+}
+/* Đảm bảo tiêu đề nằm trên form và căn giữa */
+.title-header {
+    text-align: center; /* Căn giữa chữ */
+    width: 100%; /* Đảm bảo nó chiếm toàn bộ chiều ngang */
+    margin-bottom: 10px; /* Khoảng cách với bảng */
+}
+
+/* Đảm bảo bảng nằm chính giữa */
+.employee-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Định dạng bảng */
+table.min-w-full {
+    width: 100%; /* Không quá rộng */
+    max-width: 1240px; /* Giữ bảng trong giới hạn */
+    margin: 0 auto; /* Căn giữa */
+}
+.employee-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 160%;
+    padding-left: 110px; /* Dành không gian cho sidebar */
+}
+/* Đảm bảo bảng chiếm toàn bộ phần hiển thị */
+.table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Bảng mở rộng ngang tối đa */
+table {
+    width: 90%;
+    max-width: 1200px; /* Giới hạn tối đa nếu muốn */
+}
+.employee-title {
+    margin-bottom: 80px; /* Tùy chỉnh khoảng cách theo ý muốn */
+  }
+  
