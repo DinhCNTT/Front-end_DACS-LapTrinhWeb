@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FaHome, FaUserPlus, FaUsersCog, FaCogs, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 import "./Sidebar.css";
-import { MdCategory, MdFolderOpen } from "react-icons/md"; // ✅ Thêm MdFolderOpen
+import { MdCategory, MdOutlinePostAdd, MdOutlineLibraryAdd, MdFolderOpen, MdPostAdd } from "react-icons/md"; // Thêm icon MdPostAdd cho mục "Quản Lý Tin Đăng"
+
 
 const Sidebar = ({ onLogout }) => {
     const navigate = useNavigate();
@@ -40,11 +41,12 @@ const Sidebar = ({ onLogout }) => {
                 <li onClick={() => navigate("/admin/manage-categories")}> 
                     <a href="#"><MdFolderOpen className="menu-icon" /> <span className="menu-label">Quản Lý Danh Mục Cha</span></a> 
                 </li>
-                <li>
-                    <a href="#"><FaCogs className="menu-icon" /> <span className="menu-label">Cài đặt hệ thống</span></a>
-                </li>
+                
                 <li onClick={() => navigate("/admin/manage-subcategories")}> 
                     <a href="#"><MdFolderOpen className="menu-icon" /> <span className="menu-label">Quản Lý Danh Mục Con</span></a> 
+                </li>
+                <li onClick={() => navigate("/admin/manage-posts")}> {/* Thêm mục Quản Lý Tin Đăng */}
+                    <a href="#"><MdPostAdd className="menu-icon" /> <span className="menu-label">Quản Lý Tin Đăng</span></a>
                 </li>
             </ul>
             {/* Nút Đăng Xuất */}

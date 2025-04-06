@@ -1,0 +1,175 @@
+/* Quản lý tin đăng */
+.manage-posts-container {
+    padding: 15px; /* Giảm padding để giảm khoảng cách bên trong */
+    margin-left: 250px;
+    background-color: #f9f9f9;
+    font-size: 14px; /* Giảm kích thước font chữ chung */
+}
+
+/* Tiêu đề */
+.manage-posts-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Bảng quản lý tin đăng */
+.manage-posts-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    table-layout: fixed;
+}
+
+/* Cột tiêu đề và dữ liệu trong bảng */
+.manage-posts-table th,
+.manage-posts-table td {
+    padding: 8px; /* Giảm padding trong bảng */
+    text-align: center;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-size: 13px; /* Giảm kích thước font trong bảng */
+}
+
+.manage-posts-table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    color: #333;
+}
+
+.manage-posts-table td {
+    color: #555;
+}
+
+/* Cột ID */
+.manage-posts-table .id-column {
+    width: 80px;
+    text-align: center;
+}
+
+/* Cột Tiêu Đề */
+.manage-posts-table .title-column {
+    width: 200px;
+    text-align: center;
+}
+
+/* Cột Tỉnh Thành */
+.manage-posts-table .location-column {
+    width: 150px;
+    text-align: center;
+}
+
+/* Cột Quận Huyện */
+.manage-posts-table .district-column {
+    width: 150px;
+    text-align: center;
+}
+
+/* Cột Người Bán */
+.manage-posts-table .seller-column {
+    width: 150px;
+    text-align: center;
+}
+
+/* Cột Ngày Đăng */
+.manage-posts-table .date-column {
+    width: 120px;
+    text-align: center;
+}
+
+/* Cột Giá */
+.manage-posts-table .price-column {
+    width: 120px;
+    text-align: center;
+}
+
+/* Cột Mô Tả */
+.manage-posts-table .description-column {
+    width: 400px; /* Đặt độ rộng cột mô tả */
+    white-space: normal; /* Cho phép nội dung dòng dài xuống */
+    overflow: visible;
+    text-align: left;  /* Mô tả sẽ được căn trái */
+}
+
+/* Cột Hình Ảnh */
+.manage-posts-table .image-column {
+    width: 150px;
+    text-align: center;
+}
+
+/* Cột Trạng Thái */
+.manage-posts-table .status-column {
+    width: 100px;
+    text-align: center;
+}
+
+/* Cột Thao Tác */
+.manage-posts-table .action-column {
+    width: 180px;
+    text-align: center;
+}
+
+/* Cột hình ảnh */
+.manage-posts-table .image-column img {
+    max-width: 150px;
+    height: auto;
+}
+
+/* Các nút Duyệt và Từ chối */
+.manage-posts-btn {
+    padding: 5px 10px; /* Giảm kích thước nút */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px; /* Giảm kích thước font trong nút */
+}
+
+.manage-posts-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.manage-posts-approve-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.manage-posts-reject-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.manage-posts-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Trạng thái tin đăng */
+.manage-posts-status-approved {
+    color: green;
+    font-weight: bold;
+}
+
+.manage-posts-status-rejected {
+    color: red;
+    font-weight: bold;
+}
+
+.manage-posts-status-pending {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+/* Căn chỉnh độ rộng và căn giữa cho các cột */
+.manage-posts-no-data-message {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+}
+
+
+
+

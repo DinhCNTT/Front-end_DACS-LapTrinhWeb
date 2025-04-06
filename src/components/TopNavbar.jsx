@@ -63,7 +63,7 @@ const TopNavbar = () => {
       </div>
 
       <div className="nav-right">
-        <Link to="/quan-ly-tin" className="manage-post">Quản lý tin</Link>
+      <Link to="/quan-ly-tin" className="manage-post">Quản lý tin</Link>
         <Link to="/dang-tin" className="post-btn">ĐĂNG TIN</Link>
       </div>
     </header>

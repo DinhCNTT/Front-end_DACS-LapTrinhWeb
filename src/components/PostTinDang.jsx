@@ -1,7 +1,9 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import TopNavbar from "../components/TopNavbar";
+import "./PostTinDang.css";
 
 const PostTinDang = () => {
   const { user } = useContext(AuthContext);
@@ -20,18 +22,17 @@ const PostTinDang = () => {
   const [statusMessage, setStatusMessage] = useState("");
   const [tinhThanhList, setTinhThanhList] = useState([]);
   const [quanHuyenList, setQuanHuyenList] = useState([]);
+  const [previewData, setPreviewData] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
 
-  // State cho thông tin xem trước
-  const [preview, setPreview] = useState(null);
-
+  // Lấy categoryId và categoryName từ URL
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
-    const id = queryParams.get("categoryId");
-    setCategoryId(id);
+    setCategoryId(queryParams.get("categoryId"));
     setCategoryName(queryParams.get("categoryName"));
-    console.log("Category ID:", id); // In ra giá trị categoryId
   }, [location]);
 
+  // Fetch danh sách tỉnh thành từ API
   useEffect(() => {
     const fetchTinhThanh = async () => {
       try {
@@ -43,10 +44,10 @@ const PostTinDang = () => {
         console.error("Lỗi khi tải danh sách tỉnh thành:", error);
       }
     };
-
     fetchTinhThanh();
   }, []);
 
+  // Fetch danh sách quận huyện khi tỉnh thành được chọn
   useEffect(() => {
     if (province) {
       const fetchQuanHuyen = async () => {
@@ -59,28 +60,47 @@ const PostTinDang = () => {
           console.error("Lỗi khi tải danh sách quận huyện:", error);
         }
       };
-
       fetchQuanHuyen();
     }
   }, [province]);
 
-  const handlePreview = async () => {
-    try {
-      if (!categoryId) {
-        console.error("categoryId không hợp lệ");
-        return;
-      }
-
-      // Gửi yêu cầu lấy bài đăng từ API theo MaTinDang
-      const response = await axios.get(`http://localhost:5133/api/tindang/get-post/${categoryId}`);
-      if (response.data) {
-        setPreview(response.data);  // Lưu thông tin bài đăng vào state
-      }
-    } catch (error) {
-      console.error("Lỗi khi lấy bài đăng:", error);
+  // Xử lý khi người dùng chọn file hình ảnh
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result); // Cập nhật hình ảnh đã chọn
+      };
+      reader.readAsDataURL(file);
+      setImage(file); // Cập nhật tệp đã chọn
     }
   };
 
+  // Xử lý nút Xem Trước
+  const handlePreview = () => {
+    // Kiểm tra tất cả các trường đã điền chưa
+    if (!title || !description || !price || !contactInfo || !province || !district) {
+      alert("Vui lòng điền đầy đủ thông tin trước khi xem trước.");
+      return;
+    }
+
+    // Nếu đã đầy đủ, hiển thị bảng xem trước
+    setPreviewData({
+      title,
+      description,
+      price,
+      contactInfo,
+      condition,
+      province,
+      district,
+      canNegotiate,
+      categoryName,
+      image: image ? image.name : "No image",
+    });
+  };
+
+  // Xử lý khi người dùng submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -97,10 +117,10 @@ const PostTinDang = () => {
     formData.append("condition", condition);
     formData.append("province", province);
     formData.append("district", district);
-    formData.append("userId", user.id);
-    formData.append("categoryId", categoryId);
-    formData.append("categoryName", categoryName);
-    formData.append("canNegotiate", canNegotiate);
+    formData.append("userId", user.id); // Lấy user.id từ context và gửi đi
+    formData.append("categoryId", categoryId); // Gửi mã danh mục con
+    formData.append("categoryName", categoryName); // Gửi tên danh mục con
+    formData.append("canNegotiate", canNegotiate); // Gửi giá trị canNegotiate
     if (image) formData.append("image", image);
 
     try {
@@ -109,11 +129,9 @@ const PostTinDang = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-
-      // Sau khi đăng thành công, lưu thông tin bài đăng trả về từ server vào state `preview`
-      setStatusMessage("✅ Bài đăng thành công!");
-      setPreview(response.data);  // Hiển thị bài đăng ngay sau khi gửi thành công
-      alert("Bài đăng thành công!");
+      // Thông báo thành công
+      setStatusMessage("✅ Tin bạn đã được gửi đi, vui lòng đợi duyệt!");
+      alert("Tin bạn đã được gửi đi, vui lòng đợi duyệt!"); // Hiển thị thông báo dạng pop-up
     } catch (error) {
       console.error("Lỗi khi đăng tin:", error);
       setStatusMessage("❌ Đăng tin thất bại!");
@@ -122,62 +140,60 @@ const PostTinDang = () => {
   };
 
   return (
-    <div>
-      <h2>Đăng Tin</h2>
-      {statusMessage && <p>{statusMessage}</p>}
-
-      {categoryName && (
-        <div>
-          <h4>Danh mục con đã chọn: {categoryName}</h4>
-        </div>
+    <div className="post-tindang-container">
+      <TopNavbar />
+      {statusMessage && (
+        <p className={`post-tindang-status ${statusMessage.includes("thất bại") ? "error" : ""}`}>
+          {statusMessage}
+        </p>
       )}
 
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form className="post-tindang-form" onSubmit={handleSubmit}>
+        {categoryName && (
+          <div className="post-tindang-group">
+            <label>Danh mục con đã chọn</label>
+            <textarea
+              value={`Danh mục con đã chọn: ${categoryName}`}
+              readOnly
+              rows="4"
+              cols="50"
+            />
+          </div>
+        )}
+        <div className="post-tindang-group">
           <label>Tiêu đề</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
+          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
         </div>
-        <div>
+        <div className="post-tindang-group">
           <label>Mô tả</label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
         </div>
-        <div>
+        <div className="post-tindang-group">
           <label>Giá</label>
-          <input
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
+          <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} required />
         </div>
-        <div>
+        <div className="post-tindang-group">
           <label>Thông tin liên hệ</label>
-          <input
-            type="text"
-            value={contactInfo}
-            onChange={(e) => setContactInfo(e.target.value)}
-            required
-          />
+          <input type="text" value={contactInfo} onChange={(e) => setContactInfo(e.target.value)} required />
         </div>
-        <div>
+        <div className="post-tindang-group">
           <label>Tình trạng sản phẩm</label>
           <select value={condition} onChange={(e) => setCondition(e.target.value)} required>
             <option value="Moi">Mới</option>
             <option value="DaSuDung">Đã Sử Dụng</option>
           </select>
         </div>
-
-        {/* Chọn Tỉnh Thành */}
-        <div>
+        <div className="post-tindang-group">
+          <label>
+            <input
+              type="checkbox"
+              checked={canNegotiate}
+              onChange={(e) => setCanNegotiate(e.target.checked)}
+            />
+            Có thể thương lượng
+          </label>
+        </div>
+        <div className="post-tindang-group">
           <label>Tỉnh/Thành</label>
           <select value={province} onChange={(e) => setProvince(e.target.value)} required>
             <option value="">Chọn tỉnh thành</option>
@@ -188,9 +204,7 @@ const PostTinDang = () => {
             ))}
           </select>
         </div>
-
-        {/* Chọn Quận Huyện */}
-        <div>
+        <div className="post-tindang-group">
           <label>Quận/Huyện</label>
           <select value={district} onChange={(e) => setDistrict(e.target.value)} required>
             <option value="">Chọn quận huyện</option>
@@ -201,43 +215,41 @@ const PostTinDang = () => {
             ))}
           </select>
         </div>
-
-        {/* Chọn ảnh */}
-        <div>
+        <div className="post-tindang-group">
           <label>Ảnh</label>
-          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+          <input type="file" onChange={handleFileChange} />
+          {imagePreview && (
+            <div className="image-preview-container">
+              <img src={imagePreview} alt="Image Preview" />
+            </div>
+          )}
         </div>
 
-        {/* Checkbox "Có thể thương lượng" */}
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              checked={canNegotiate}
-              onChange={(e) => setCanNegotiate(e.target.checked)}
-            />
-            Có thể thương lượng
-          </label>
+        {/* Button group */}
+        <div className="post-tindang-button-group">
+          <button type="button" onClick={handlePreview}>Xem Trước</button>
+          <button type="submit">Đăng Tin</button>
         </div>
 
-        <button type="button" onClick={handlePreview}>Xem trước</button>
-        <button type="submit">Đăng Tin</button>
+        {/* Xem trước bài đăng */}
+        {previewData && (
+          <div className="post-tindang-preview" style={{ textAlign: 'left' }}>
+            <h3>Xem Trước Bài Đăng</h3>
+            <table className="post-tindang-preview-table">
+              <tbody>
+                <tr><td>Tiêu đề</td><td>{previewData.title}</td></tr>
+                <tr><td>Mô tả</td><td>{previewData.description}</td></tr>
+                <tr><td>Giá</td><td>{previewData.price}</td></tr>
+                <tr><td>Thông tin liên hệ</td><td>{previewData.contactInfo}</td></tr>
+                <tr><td>Tình trạng</td><td>{previewData.condition}</td></tr>
+                <tr><td>Có thể thương lượng</td><td>{previewData.canNegotiate ? "Có" : "Không"}</td></tr>
+                <tr><td>Danh mục con</td><td>{previewData.categoryName}</td></tr>
+                <tr><td>Ảnh</td><td>{previewData.image}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        )}
       </form>
-
-      {/* Hiển thị thông tin xem trước */}
-      {preview && (
-        <div>
-          <h3>Xem Trước</h3>
-          <p><strong>Tiêu đề:</strong> {preview.TieuDe}</p>
-          <p><strong>Mô tả:</strong> {preview.MoTa}</p>
-          <p><strong>Giá:</strong> {preview.Gia}</p>
-          <p><strong>Thông tin liên hệ:</strong> {preview.ThongTinLienHe}</p>
-          <p><strong>Tình trạng:</strong> {preview.TinhTrang}</p>
-          <p><strong>Tỉnh Thành:</strong> {preview.TinhThanh}</p>
-          <p><strong>Quận Huyện:</strong> {preview.QuanHuyen}</p>
-          <p><strong>Có thể thương lượng:</strong> {preview.CoTheThoaThuan ? "Có" : "Không"}</p>
-        </div>
-      )}
     </div>
   );
 };

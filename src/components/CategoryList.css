@@ -5,12 +5,13 @@
     margin: 0 auto;
     text-align: center;
     position: relative;
+    margin-top: 150px; /* Thay vì top, dùng margin-top để di chuyển container xuống dưới */
     top: 50px;
     overflow: hidden;
     padding: 20px;
-    margin-left: 180px; /* Tăng giá trị để dịch phải */
+    margin-left: 173px; /* Tăng giá trị để dịch phải */
     transform: translateX(84px); /* Dịch phải thêm */
-    background-color: #ffffff; /* Đổi thành màu trắng */
+    background-color: #FFFAFA; /* Đổi thành màu trắng */
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
