@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useContext, useState, useEffect } from "react";
 import "./SearchBar.css";
 import { FaSearch, FaMapMarkerAlt } from "react-icons/fa";
@@ -38,11 +39,22 @@ const SearchBar = () => {
 
   return (
     <div className="search-bar">
+=======
+import React from "react";
+import "./SearchBar.css";
+import { FaSearch, FaMapMarkerAlt } from "react-icons/fa";
+
+const SearchBar = () => {
+  return (
+    <div className="search-bar">
+      {/* Phần chọn vị trí */}
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
       <div className="location">
         <FaMapMarkerAlt className="location-icon" />
         <span>Tp Hồ Chí Minh ▼</span>
       </div>
 
+<<<<<<< HEAD
       <input
         type="text"
         placeholder="Tìm kiếm sản phẩm trên Unimarket"
@@ -52,6 +64,13 @@ const SearchBar = () => {
       />
 
       <button className="search-btn" onClick={handleSearch}>
+=======
+      {/* Ô tìm kiếm */}
+      <input type="text" placeholder="Tìm kiếm sản phẩm trên Unimarket" />
+
+      {/* Nút tìm kiếm */}
+      <button className="search-btn">
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
         <FaSearch />
       </button>
     </div>

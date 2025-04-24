@@ -76,7 +76,11 @@
 
 .logout-btn {
   position: relative;
+<<<<<<< HEAD
   top: -30px; /* Đẩy lên 30px */
+=======
+  top: -20px; /* Đẩy lên 20px */
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
   width: 100%;
   padding: 15px;
   background: white;
@@ -96,6 +100,10 @@
 
 .logout-btn .menu-icon {
   margin-right: 8px;
+<<<<<<< HEAD
 }
 
 
+=======
+}
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534

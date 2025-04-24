@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Style cho modal mới */
 .custom-modal {
     position: fixed;
@@ -272,4 +273,144 @@
   margin: 20px auto 0 300px; /* Dịch sang phải 300px */
   position: relative; /* Giữ nguyên relative để header nằm trong section */
   overflow: hidden; /* Đảm bảo không bị tràn */
+=======
+.custom-category-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+  padding: 0 20px;
+  font-family: Arial, sans-serif;
+  margin-left: 750px; /* Điều chỉnh khoảng cách từ trái sang phải */
+  margin-top: -260px;   /* Điều chỉnh khoảng cách từ trên xuống (bạn có thể thay đổi giá trị này) */
+}
+
+.custom-category-section h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.custom-category-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 200px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 350px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-category-header:hover {
+  background-color: #e9e9e9;
+  border-color: #bbb;
+}
+
+.custom-category-header h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+  margin: 0;
+}
+
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.custom-modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.custom-modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.custom-back-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #007bff;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+.custom-back-btn:hover {
+  text-decoration: none; /* Đảm bảo không có gạch chân khi hover */
+  color: #0056b3; /* Thêm màu khi hover để làm nút nổi bật hơn */
+}
+
+
+.custom-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.custom-category-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.custom-category-item:hover {
+  background-color: #e1e1e1;
+  transform: scale(1.05);
+}
+
+.custom-category-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.custom-category-item h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+}
+
+.custom-arrow {
+  font-size: 18px;
+  color: #007bff;
+  margin-top: 10px;
+}
+
+.custom-modal-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 }

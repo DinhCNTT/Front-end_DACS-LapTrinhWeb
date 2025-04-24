@@ -14,8 +14,15 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.8",
     "axios": "^1.8.4",
+<<<<<<< HEAD
     "jwt-decode": "^4.0.0",
     "react": "^19.0.0",
+=======
+    "bootstrap": "^5.3.3",
+    "jwt-decode": "^4.0.0",
+    "react": "^19.0.0",
+    "react-bootstrap": "^2.10.9",
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.4.0",

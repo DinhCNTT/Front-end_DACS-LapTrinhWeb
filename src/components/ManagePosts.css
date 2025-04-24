@@ -1,9 +1,16 @@
 /* Quản lý tin đăng */
 .manage-posts-container {
+<<<<<<< HEAD
     padding: 15px; /* Giảm padding để giảm khoảng cách bên trong */
     margin-left: 250px;
     background-color: #f9f9f9;
     font-size: 14px; /* Giảm kích thước font chữ chung */
+=======
+    padding: 20px;
+    width: calc(90vw - 190px); /* Điều chỉnh độ rộng tương tự CSS2 */
+    margin-left: 250px; /* Điều chỉnh vị trí sang phải giống CSS2 */
+    background-color: #f9f9f9; /* Màu nền giống CSS2 */
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 }
 
 /* Tiêu đề */
@@ -18,20 +25,31 @@
     width: 100%;
     border-collapse: collapse;
     background: white;
+<<<<<<< HEAD
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     table-layout: fixed;
+=======
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Tạo bóng mờ giống CSS2 */
+    border-radius: 8px; /* Thêm border-radius cho bảng */
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 }
 
 /* Cột tiêu đề và dữ liệu trong bảng */
 .manage-posts-table th,
 .manage-posts-table td {
+<<<<<<< HEAD
     padding: 8px; /* Giảm padding trong bảng */
     text-align: center;
     border: 1px solid #ddd;
     word-wrap: break-word;
     overflow-wrap: break-word;
     font-size: 13px; /* Giảm kích thước font trong bảng */
+=======
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 }
 
 .manage-posts-table th {
@@ -44,6 +62,7 @@
     color: #555;
 }
 
+<<<<<<< HEAD
 /* Cột ID */
 .manage-posts-table .id-column {
     width: 80px;
@@ -125,6 +144,14 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 12px; /* Giảm kích thước font trong nút */
+=======
+/* Các nút Duyệt và Từ chối */
+.manage-posts-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 }
 
 .manage-posts-btn:disabled {
@@ -133,18 +160,30 @@
 }
 
 .manage-posts-approve-btn {
+<<<<<<< HEAD
     background-color: #28a745;
+=======
+    background-color: #28a745; /* Màu xanh lá cây cho nút Duyệt */
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     color: white;
 }
 
 .manage-posts-reject-btn {
+<<<<<<< HEAD
     background-color: #dc3545;
+=======
+    background-color: #dc3545; /* Màu đỏ cho nút Từ chối */
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     color: white;
 }
 
 .manage-posts-btn:hover {
     opacity: 0.9;
+<<<<<<< HEAD
     transform: translateY(-1px);
+=======
+    transform: translateY(-1px); /* Tạo hiệu ứng nâng lên giống CSS2 */
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 }
 
 /* Trạng thái tin đăng */
@@ -164,12 +203,24 @@
 }
 
 /* Căn chỉnh độ rộng và căn giữa cho các cột */
+<<<<<<< HEAD
+=======
+.manage-posts-btn,
+.manage-posts-td {
+    width: 120px;
+    text-align: center;
+}
+
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 .manage-posts-no-data-message {
     text-align: center;
     font-style: italic;
     color: #999;
 }
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534

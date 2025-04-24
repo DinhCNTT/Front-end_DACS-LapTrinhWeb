@@ -236,6 +236,7 @@
     height: 18px; /* Giảm kích thước icon */
     margin-right: 8px;
   }
+<<<<<<< HEAD
 /* Nút danh mục */
 .category-button-electronics{
     background: transparent;
@@ -340,3 +341,6 @@
     margin-bottom: 28px;  /* Tạo khoảng cách bên dưới nút */
     transition: background-color 0.3s ease;
 }
+=======
+    
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534

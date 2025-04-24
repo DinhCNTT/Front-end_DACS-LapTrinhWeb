@@ -26,7 +26,32 @@
 }
 /* Tiêu đề "Đăng nhập" */
 .login-box h2 {
+<<<<<<< HEAD
     color: black !important; /* Đổi màu chữ thành đen */
+=======
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    background: linear-gradient(
+        90deg,
+        #ff7b00,  /* Cam đậm */
+        #ff9500,  /* Cam sáng */
+        #ffbb00,  /* Vàng cam */
+        #ff7b00   /* Quay lại cam đậm */
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientFlow 4s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 }
 
 /* Link đăng ký */
@@ -37,7 +62,11 @@
 
 /* Ô nhập liệu */
 input {
+<<<<<<< HEAD
     width: 100%;
+=======
+    width: 93%;
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     padding: 12px;
     margin: 8px 0;
     border: 1px solid #ccc; /* Viền nhẹ */
@@ -85,9 +114,15 @@ button:hover {
 .signup-link a:hover {
     text-decoration: underline;
 }
+<<<<<<< HEAD
 .error-message {
     color: #fff;
     background: #d32f2f; /* Màu đỏ chính */
+=======
+/* Thông báo lỗi */
+.error-message {
+    color: #000; /* Chữ màu đen */
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     border: 2px solid #ffa726; /* Viền màu cam */
     padding: 12px;
     border-radius: 8px;
@@ -99,6 +134,10 @@ button:hover {
     transform-origin: center;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 /* Hiệu ứng xuất hiện + rung nhẹ */
 @keyframes fadeInShake {
     0% { opacity: 0; transform: translateY(-10px) scale(0.95); }
@@ -106,3 +145,9 @@ button:hover {
     70% { opacity: 1; transform: translateY(-2px) rotate(1.5deg); }
     100% { opacity: 1; transform: translateY(0) rotate(0); }
 }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534

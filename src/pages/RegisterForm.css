@@ -1,6 +1,7 @@
 /* Định dạng container chính */
 .register-container {
     display: flex;
+<<<<<<< HEAD
     justify-content: center; /* Căn giữa theo chiều ngang */
     align-items: center; /* Căn giữa theo chiều dọc */
     height: 100vh; /* Chiều cao chiếm toàn bộ màn hình */
@@ -52,11 +53,88 @@ h2 {
 
 /* Nút đăng ký */
 button {
+=======
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f5f5f5; /* Chuyển nền sang màu xám nhẹ */
+}
+
+/* Hộp đăng ký */
+.register-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* Bóng đổ nhẹ */
+    width: 100%;
+    max-width: 420px;
+}
+
+.register-title {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 2.2rem; /* ~22px */
+    font-weight: 800; /* Bold hơn */
+    margin-bottom: 25px;
+    text-transform: uppercase; /* Chữ in hoa */
+    letter-spacing: 1px; /* Giãn cách chữ */
+    background: linear-gradient(
+        90deg,
+        #ff7b00,  /* Cam đậm */
+        #ff9500,  /* Cam sáng */
+        #ffbb00,  /* Vàng cam */
+        #ff7b00   /* Quay lại cam đậm */
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientFlow 4s ease infinite;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Form đăng ký */
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ô nhập liệu */
+.register-input {
+    width: 94%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    color: #333;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+/* Hiệu ứng khi focus vào ô nhập */
+.register-input:focus {
+    border-color: #ff9800;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(255, 152, 0, 0.4);
+}
+
+/* Nút đăng ký */
+.register-button {
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     width: 100%;
     padding: 12px;
     background-color: #ff9800;
     color: white;
     border: none;
+<<<<<<< HEAD
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
@@ -65,10 +143,22 @@ button {
 }
 
 button:hover {
+=======
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     background-color: #e68900;
 }
 
 /* Điều khoản */
+<<<<<<< HEAD
 .terms {
     font-size: 12px;
     color: #aaa;
@@ -79,15 +169,31 @@ button:hover {
 
 .terms a {
     color: orange;
+=======
+.register-terms {
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.register-terms a {
+    color: #ff9800;
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     text-decoration: none;
     font-weight: bold;
 }
 
+<<<<<<< HEAD
 .terms a:hover {
+=======
+.register-terms a:hover {
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     text-decoration: underline;
 }
 
 /* Hoặc đăng nhập bằng mạng xã hội */
+<<<<<<< HEAD
 .or {
     text-align: center;
     color: white;
@@ -97,11 +203,24 @@ button:hover {
 
 /* Nút đăng nhập mạng xã hội */
 .social-login {
+=======
+.register-or {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+/* Nút đăng nhập mạng xã hội */
+.register-social-login {
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
+<<<<<<< HEAD
 .social-login button {
     flex: 1;
     padding: 8px;
@@ -123,10 +242,35 @@ button:hover {
 }
 
 .apple {
+=======
+.register-social-button {
+    flex: 1;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+/* Màu nền của các nút mạng xã hội */
+.register-facebook {
+    background-color: #3b5998;
+}
+
+.register-google {
+    background-color: #db4437;
+}
+
+.register-apple {
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     background-color: #000;
 }
 
 /* Hover hiệu ứng */
+<<<<<<< HEAD
 .facebook:hover {
     background-color: #2d4373;
 }
@@ -148,10 +292,38 @@ button:hover {
 
 .login-link a {
     color: orange;
+=======
+.register-facebook:hover {
+    opacity: 0.8;
+}
+
+.register-google:hover {
+    opacity: 0.8;
+}
+
+.register-apple:hover {
+    opacity: 0.8;
+}
+
+/* Link chuyển sang đăng nhập */
+.register-login-link {
+    text-align: center;
+    color: #444;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-login-link a {
+    color: #ff9800;
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     text-decoration: none;
     font-weight: bold;
 }
 
+<<<<<<< HEAD
 .login-link a:hover {
+=======
+.register-login-link a:hover {
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
     text-decoration: underline;
 }

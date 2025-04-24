@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/* Container chính - căn giữa bảng */
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 .employee-list-container {
     display: flex;
     flex-direction: column;

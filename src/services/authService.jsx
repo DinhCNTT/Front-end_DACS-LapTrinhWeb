@@ -13,6 +13,7 @@ const register = async (email, password) => {
     }
 };
 
+<<<<<<< HEAD
 // Đăng nhập và lưu token cùng thông tin người dùng
 const login = async (email, password) => {
     try {
@@ -28,6 +29,15 @@ const login = async (email, password) => {
 
             // Lưu ID người dùng vào localStorage
             localStorage.setItem("userId", response.data.id);  // Lưu ID người dùng
+=======
+// Đăng nhập và lưu token
+const login = async (email, password) => {
+    try {
+        const response = await axios.post(`${API_URL}/login`, { email, password });
+        if (response.data.token) {
+            localStorage.setItem("user", JSON.stringify(response.data));
+            localStorage.setItem("userRole", response.data.role); // Lưu role
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
         }
         return response.data;
     } catch (error) {
@@ -36,6 +46,7 @@ const login = async (email, password) => {
     }
 };
 
+<<<<<<< HEAD
 // Đăng xuất, xóa thông tin người dùng và token
 const logout = () => {
     localStorage.removeItem("user");
@@ -43,6 +54,12 @@ const logout = () => {
     localStorage.removeItem("userFullName");
     localStorage.removeItem("token");
     localStorage.removeItem("userId");  // Xóa ID người dùng khi đăng xuất
+=======
+// Đăng xuất, xóa token
+const logout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("userRole");
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 };
 
 // Lấy thông tin người dùng từ localStorage
@@ -55,11 +72,14 @@ const getUser = () => {
     }
 };
 
+<<<<<<< HEAD
 // Lấy ID người dùng từ localStorage
 const getUserId = () => {
     return localStorage.getItem("userId");  // Trả về ID người dùng từ localStorage
 };
 
+=======
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 // Kiểm tra quyền Admin
 const isAdmin = () => {
     const user = getUser();
@@ -78,4 +98,8 @@ const isAuthenticated = () => {
     return !!user;
 };
 
+<<<<<<< HEAD
 export default { register, login, logout, getUser, getUserId, isAdmin, isStaff, isAuthenticated };
+=======
+export default { register, login, logout, getUser, isAdmin, isStaff, isAuthenticated };
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534

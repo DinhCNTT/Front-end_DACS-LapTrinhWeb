@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "./CategoryList.css";
@@ -7,6 +8,14 @@ const CategoryList = () => {
   const [categories, setCategories] = useState([]);
   const placeholderImage = "https://dummyimage.com/150"; // Ảnh mặc định
   const { setSelectedCategory } = useContext(CategoryContext); // Lấy setSelectedCategory từ context
+=======
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./CategoryList.css";
+const CategoryList = () => {
+  const [categories, setCategories] = useState([]);
+  const placeholderImage = "https://dummyimage.com/150"; // Ảnh mặc định
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -30,21 +39,31 @@ const CategoryList = () => {
     fetchCategories();
   }, []);
 
+<<<<<<< HEAD
   const handleCategoryClick = (categoryName) => {
     setSelectedCategory(categoryName); // Cập nhật danh mục khi nhấn
   };
 
+=======
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
   return (
     <div className="category-container">
       <h2 className="category-title">Khám phá danh mục</h2>
       <ul className="category-grid">
         {categories.map((category, index) => (
+<<<<<<< HEAD
           <li key={index} className="category-item">
+=======
+          <li key={index} className="category-list-item">
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
             <img
               src={category.anhDanhMuc}
               alt={category.tenDanhMucCha}
               className="category-image"
+<<<<<<< HEAD
               onClick={() => handleCategoryClick(category.tenDanhMucCha)} // Khi nhấn vào, cập nhật danh mục
+=======
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = placeholderImage;
@@ -58,4 +77,8 @@ const CategoryList = () => {
   );
 };
 
+<<<<<<< HEAD
 export default CategoryList;
+=======
+export default CategoryList;
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534

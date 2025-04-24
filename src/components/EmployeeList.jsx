@@ -97,4 +97,8 @@ const EmployeeList = () => {
   );
 };
 
+<<<<<<< HEAD
 export default EmployeeList;
+=======
+export default EmployeeList;
+>>>>>>> 8c86d9ae2cd85622f4768b7c9338b9a03f6bc534
