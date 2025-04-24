@@ -1,12 +1,18 @@
-import { AuthProvider } from "./context/AuthContext"; // 🔥 Đảm bảo đúng file
+import { AuthProvider } from "./context/AuthContext"; 
 import AppRoutes from "./routes/AppRoutes";
 import { BrowserRouter } from "react-router-dom";
+import { SearchProvider } from "./context/SearchContext"; // import SearchContext
+import { CategoryProvider } from "./context/CategoryContext"; // import CategoryContext
 
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider> {/* ✅ Phải bọc toàn bộ AppRoutes */}
-        <AppRoutes />
+      <AuthProvider>
+        <SearchProvider>
+          <CategoryProvider> {/* ✅ Thêm lớp này bọc AppRoutes */}
+            <AppRoutes />
+          </CategoryProvider>
+        </SearchProvider>
       </AuthProvider>
     </BrowserRouter>
   );

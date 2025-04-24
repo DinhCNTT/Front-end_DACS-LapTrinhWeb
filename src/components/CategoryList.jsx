@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "./CategoryList.css";
+import { CategoryContext } from "../context/CategoryContext"; // Import CategoryContext
+
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
   const placeholderImage = "https://dummyimage.com/150"; // Ảnh mặc định
+  const { setSelectedCategory } = useContext(CategoryContext); // Lấy setSelectedCategory từ context
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -27,6 +30,10 @@ const CategoryList = () => {
     fetchCategories();
   }, []);
 
+  const handleCategoryClick = (categoryName) => {
+    setSelectedCategory(categoryName); // Cập nhật danh mục khi nhấn
+  };
+
   return (
     <div className="category-container">
       <h2 className="category-title">Khám phá danh mục</h2>
@@ -37,6 +44,7 @@ const CategoryList = () => {
               src={category.anhDanhMuc}
               alt={category.tenDanhMucCha}
               className="category-image"
+              onClick={() => handleCategoryClick(category.tenDanhMucCha)} // Khi nhấn vào, cập nhật danh mục
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = placeholderImage;

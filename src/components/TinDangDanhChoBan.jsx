@@ -1,74 +1,102 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios"; // Import axios để lấy dữ liệu từ API
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import "./TinDangDanhChoBan.css";
+import { CategoryContext } from "../context/CategoryContext"; // Import CategoryContext
+import { SearchContext } from "../context/SearchContext"; // Import SearchContext
+import { Link } from "react-router-dom"; // Import Link
 
 const TinDangDanhChoBan = () => {
   const [posts, setPosts] = useState([]);
-  const [visiblePosts, setVisiblePosts] = useState(25); // Hiển thị 5 hàng, mỗi hàng 5 tin đăng
+  const [visiblePosts, setVisiblePosts] = useState(25);
 
+  const { searchTerm } = useContext(SearchContext); // Get search term from context
+  const { selectedCategory } = useContext(CategoryContext); // Get selected category from context
+
+  // Fetch posts from API when component mounts
   useEffect(() => {
-    // Lấy dữ liệu từ API khi component mount
     const fetchPosts = async () => {
       try {
         const response = await axios.get("http://localhost:5133/api/tindang/get-posts");
-        setPosts(response.data); // Lưu dữ liệu vào state
+        setPosts(response.data); // Store posts in state
       } catch (error) {
-        console.error("Lỗi khi lấy tin đăng:", error);
+        console.error("Error fetching posts:", error);
       }
     };
 
     fetchPosts();
-  }, []); // Chạy một lần khi component mount
+  }, []); // Only run on component mount
 
+  // Filter posts by search term (ignores category)
+  const filterBySearchTerm = (posts) => {
+    return posts.filter((post) =>
+      post.tieuDe && post.tieuDe.toLowerCase().includes(searchTerm.toLowerCase()) // Check if tieuDe exists
+    );
+  };
+  // Filter posts by selected category
+  const filterByCategory = (posts) => {
+    return posts.filter((post) => {
+      return selectedCategory
+        ? post.danhMucCha && post.danhMucCha.toLowerCase() === selectedCategory.toLowerCase() // Check if category matches
+        : true; // If no category selected, don't filter
+    });
+  };
+
+  // Apply filters: category first, then search term
+  const filteredPostsByCategory = filterByCategory(posts);
+  const filteredPostsBySearch = filterBySearchTerm(filteredPostsByCategory);
+
+  // Handle "show more" button to display more posts
   const handleShowMore = () => {
-    setVisiblePosts((prevVisible) => prevVisible + 25); // Mỗi lần nhấn "Xem thêm" sẽ thêm 25 bài đăng
+    setVisiblePosts((prev) => prev + 25); // Show 25 more posts
+  };
+
+  // Format price as currency (VND)
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(amount);
   };
 
   return (
     <div className="tin-dang-danh-cho-ban">
       <h2>Tin Đăng Dành Cho Bạn</h2>
-
-      {/* Hiển thị danh sách tin đăng */}
       <div className="post-list">
-        {posts.length === 0 ? (
+        {filteredPostsBySearch.length === 0 ? (
           <p>Không có tin đăng nào.</p>
         ) : (
-          posts.slice(0, visiblePosts).map((post) => (  // Chỉ hiển thị số bài đăng theo visiblePosts
+          filteredPostsBySearch.slice(0, visiblePosts).map((post) => (
             <div key={post.maTinDang} className="post-item">
-              {/* Phần hiển thị ảnh tin đăng */}
-              <div className="post-images">
-                {post.images && post.images.length > 0 ? (
-                  post.images.map((image, index) => (
-                    <img 
-                      key={index} 
-                      src={`http://localhost:5133${image}`}  // Chỉ cần kết hợp đúng với phần đường dẫn từ API
-                      alt={`Image ${index + 1}`} 
-                      className="post-image" 
-                    />
-                  ))
-                ) : (
-                  <p>Không có ảnh.</p>
-                )}
-              </div>
+              <Link to={`/tin-dang/${post.maTinDang}`} className="post-link">
+                {/* Display post image */}
+                <div className="post-images">
+                  {post.images && post.images.length > 0 ? (
+                    post.images.map((image, index) => (
+                      <img
+                        key={index}
+                        src={`http://localhost:5133${image}`}
+                        alt={`Image ${index + 1}`}
+                        className="post-image"
+                      />
+                    ))
+                  ) : (
+                    <p>Không có ảnh.</p>
+                  )}
+                </div>
 
-              {/* Phần thông tin tin đăng */}
-              <div className="post-info">
-                <h3>{post.tieuDe}</h3>
-                <p className="post-description">{post.moTa}</p>
-                <p className="price">Giá: {post.gia} đ</p>
-                <p className="post-description">Tình trạng: {post.tinhTrang}</p>
-                <p className="post-description">{post.tinhThanh} - {post.quanHuyen}</p>
-                {post.coTheThoaThuan && <p className="post-description">Có thể thương lượng</p>}
-                <p className="post-description">Địa chỉ: {post.diaChi}</p>
-                <p className="post-description">Người bán: {post.nguoiBan}</p>
-              </div>
+                {/* Display post information */}
+                <div className="post-info">
+  <h3>{post.tieuDe}</h3>
+  <p className="price">{formatCurrency(post.gia)}</p>
+  <p className="post-description">Tình trạng: {post.tinhTrang}</p>
+  <p className="post-description">{post.tinhThanh}</p>
+  {post.coTheThoaThuan && <p className="post-description">Có thể thương lượng</p>}
+</div>
+
+              </Link>
             </div>
           ))
         )}
       </div>
 
-      {/* Nút "Xem thêm" */}
-      {visiblePosts < posts.length && (
+      {visiblePosts < filteredPostsBySearch.length && (
         <button className="xem-them-btn" onClick={handleShowMore}>
           Xem thêm
         </button>

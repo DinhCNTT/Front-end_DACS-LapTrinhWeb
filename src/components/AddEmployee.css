@@ -73,3 +73,8 @@
 .add-employee-button:hover {
     background: #e67e00;
 }
+.title-Admin-Dashboard {
+    text-align: center;
+    transform: translateX(70px);
+    margin-bottom: 50px; /* Khoảng cách giữa tiêu đề và bảng */
+}

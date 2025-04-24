@@ -2,13 +2,13 @@
 .parent-category-page-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: calc(90vw - 190px);
-    height: 100vh;
+    min-height: 100vh; /* Cho phép cuộn nếu dài */
     background: white;
     padding: 20px;
     margin-left: 250px;
+    overflow-y: auto;
 }
 
 /* Tiêu đề */
@@ -19,10 +19,18 @@
     font-weight: bold;
 }
 
+/* Wrapper cho form cố định */
+.parent-category-form-wrapper {
+    position: sticky;
+    top: 20px; /* Cách đỉnh trang 20px */
+    z-index: 10;
+    width: 100%;
+    max-width: 600px;
+}
+
 /* Form nhập liệu */
 .parent-category-form {
     width: 100%;
-    max-width: 600px;
     background: white;
     padding: 25px;
     border-radius: 12px;
@@ -82,6 +90,7 @@
 .parent-category-list ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .parent-category-list li {

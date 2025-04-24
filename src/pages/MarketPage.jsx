@@ -15,7 +15,6 @@ const MarketplacePage = () => {
 
       {/* Nội dung chính */}
       <div className="main-content">
-        <h2>Danh Mục Sản Phẩm</h2>
 
         {/* Danh sách danh mục */}
         <CategoryList />

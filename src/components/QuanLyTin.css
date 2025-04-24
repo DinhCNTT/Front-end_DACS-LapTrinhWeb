@@ -177,12 +177,22 @@
 .qlt-edit-btn {
   background-color: #ffc107;
   color: #000;
+  width: 150px;
 }
+
 
 .qlt-delete-btn {
   background-color: #dc3545;
   color: white;
+  height: 50px; /* Đặt chiều cao cố định cho nút */
+  padding: 0 20px; /* Điều chỉnh padding bên trái và phải */
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
 }
+
 
 .qlt-delete-btn:hover,
 .qlt-edit-btn:hover {

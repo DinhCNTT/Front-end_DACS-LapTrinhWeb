@@ -4,7 +4,7 @@
     background-color: #FFFAFA;
     margin-left: 260px; /* Dịch sang phải */
     margin-top: 60px; /* Dịch xuống dưới */
-    width: 85%; /* Giảm kích thước */
+    width: 100%; 
     max-width: 1000px; /* Giới hạn kích thước tối đa */
     box-sizing: border-box; /* Đảm bảo không bị tràn khi padding */
     border-radius: 10px; /* Bo góc nhẹ với giá trị 10px */
@@ -120,5 +120,6 @@
     background-color: #333; /* Thêm nền khi hover */
     color: white; /* Màu chữ thay đổi thành trắng khi hover */
     border-color: #333; /* Đổi màu viền khi hover */
+    
   }
   

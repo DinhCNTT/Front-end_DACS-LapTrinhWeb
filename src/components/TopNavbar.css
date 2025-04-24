@@ -236,4 +236,107 @@
     height: 18px; /* Giảm kích thước icon */
     margin-right: 8px;
   }
-    
+/* Nút danh mục */
+.category-button-electronics{
+    background: transparent;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+.category-button-furniture {
+    background: transparent;
+    color: #333;
+    padding: 10px 15px;  /* Tăng padding để chiều ngang rộng hơn */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;  /* Ngăn cách chữ xuống dòng */
+}
+.category-button-homegoods {
+    background: transparent;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;  /* Ngăn cách chữ xuống dòng */
+}
+
+/* Highlight active button */
+.category-button-electronics.active,
+.category-button-furniture.active,
+.category-button-homegoods.active,
+.parent-link.active,
+.sub-link.active {
+    background-color: #ff6600; /* Màu nền sáng khi chọn */
+    font-weight: 600; /* Chữ đậm hơn */
+    border-radius: 5px;
+}
+/* Dropdown cho tài khoản */
+.account-dropdown {
+    position: relative;
+}
+.account-btn {
+    background: none;
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.account-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    min-width: 170px;  /* Tăng độ rộng của dropdown */
+    z-index: 1000;
+}
+
+.account-dropdown:hover .account-dropdown-menu {
+    display: flex;
+}
+
+/* Nút đăng xuất trong dropdown */
+.logout-btn {
+    padding: 10px;
+    background: #ff9900;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.logout-btn:hover {
+    background: #e68a00;
+}
+.dropdown-icon {
+    font-size: 12px;
+}
+
+
+.manage-user-btn{
+    background: #ff9900;;
+    color: white;
+    padding: 20px 20px;  /* Padding tùy chỉnh */
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 28px;  /* Tạo khoảng cách bên dưới nút */
+    transition: background-color 0.3s ease;
+}
